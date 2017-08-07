@@ -33,13 +33,18 @@
       };
       $.ajax({
           method: 'POST',
-          url: 'techbow.com',
-          data: sendData,
-          dataType: 'json'
-      }).always(function() {
+          url: '/hire-developers',
+          data: JSON.stringify(sendData),
+          dataType: 'json',
+          contentType: 'application/json'
+      })
+      .done(function(data) {
+          console.log(data);
+      })
+      .always(function() {
           $(".cd-popup-container").prepend("<p>Than you! <br> We will contact you as soon as possible.</p>");
           $('.cd-popup').addClass('is-visible');
-      })
+      });
   });
     
   $(".cd-popup-container .cd-buttons li:first-child a").click(function() {
